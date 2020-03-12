@@ -1,0 +1,135 @@
+﻿@model SIDEVIC.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn_Modal').click(function () {
+            var us = $('#username').val();
+            var pass = $('#pass').val();
+            if (us != "" || pass != "") {
+                $('#modalVolver').modal('show');
+            } else {
+                window.location.href = '@Url.Action("Index","Usuarios")';
+            }
+
+           
+        });
+        var op = '@ViewBag.Flag';
+        if (op == "field_error") {
+            var us = $('#username').val();
+            var pass = $('#pass').val();
+            if (pass == "") {
+                document.getElementById('pass').style.border = "1px solid #ff0000";
+            }
+            if (us == "") {
+                document.getElementById('username').style.border = "1px solid #ff0000";
+            }
+            
+            $('#modalError').modal('show');
+        }
+
+    });
+</script>
+
+<br />
+
+
+
+<div style="width:100%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-group" style="width:50%;margin:auto">
+        <div>
+            <h3>Añadir usuario</h3>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Nombre de usuario", "Nombre de usuario", htmlAttributes: new { @class = "" })
+
+            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @id = "username", @autofocus = "" } })
+            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Contraseña", "Contraseña", htmlAttributes: new { @class = "" })
+
+            @Html.EditorFor(model => model.contraseña, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "pass" } })
+            @Html.ValidationMessageFor(model => model.contraseña, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Rol", "Rol", htmlAttributes: new { @class = "" })
+
+            @Html.DropDownList("id_rol", null, htmlAttributes: new { @class = "form-control", @id = "rol" })
+            @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Persona", "Persona", htmlAttributes: new { @class = "" })
+
+            @Html.DropDownList("id_persona", null, htmlAttributes: new { @class = "form-control", @id = "persona" })
+            @Html.ValidationMessageFor(model => model.id_persona, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group" style="text-align:right">
+
+            <button type="button" id="btn_Modal" class="btn btn-danger">
+                Volver
+            </button>
+            <input type="submit" value="Añadir" class="btn btn-success" />
+        </div>
+    </div>
+    }
+
+
+</div>
+   
+
+<!-- Modal -->
+<div class="modal fade" id="modalVolver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#045cb8;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¿Está seguro de querer volver sin guardar?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Si vuelve, no se añadirá el usuario
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
+                <a href="@Url.Action("Index","Usuarios")" class="btn btn-danger">Volver</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#ff0000;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¡Campos sin llenar!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Complete los campos sin llenar
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal" id="btnModalError_aceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

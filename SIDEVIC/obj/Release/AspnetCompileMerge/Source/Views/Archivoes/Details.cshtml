@@ -1,0 +1,34 @@
+﻿@model SIDEVIC.Models.Archivo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Archivo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_ruta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_ruta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indicador.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indicador.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_archivo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

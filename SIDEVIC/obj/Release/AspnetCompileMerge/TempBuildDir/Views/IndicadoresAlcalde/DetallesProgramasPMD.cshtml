@@ -1,0 +1,320 @@
+﻿@model SIDEVIC.Models.DetallesPrograma
+
+@{
+    ViewBag.Title = "DetallesProgramasPMD";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#area').change(function () {
+            var area = $('#area').val();
+            var fecha = $('#fecha').val();
+            if (area != 0) {
+                var url = '@Url.Action("DetallesProgramasPMD", "IndicadoresAlcalde", new { @id = "area"})';
+                url = url.replace("area", area);
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+<div class="p-3 mb-2 text-white" style="background-color:#045cb8">
+    <h2>Detalles del programa</h2>
+</div>
+<div class="container-fluid">
+    <div class="row" style="width:30%">
+        <div class="col">
+            <a><small>Area:</small></a>
+
+            @Html.DropDownList("id_area", null, htmlAttributes: new { @class = "form-control", @id = "area" })
+        </div>
+
+
+    </div>
+    <br />
+    <div class="row px-md-n5 ">
+        <div class="col px-pb-n5">
+            <table class="table table-hover table-bordered ">
+                <thead>
+                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                        <th scope="col" colspan="2">Datos generales del programa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre del programa</th>
+                        <th scope="col">@Model.programa.nombre</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Objetivo</th>
+                        <th scope="col">@Model.programa.objetivo</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Problemática que atenderá</th>
+                        <th scope="col">@Model.programa.problematica</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Beneficiarios</th>
+                        <th scope="col">@Model.programa.beneficiarios</th>
+                    </tr>
+                </tbody>
+                <tr>
+                    <th scope="row">Eje</th>
+                    <th scope="col">@Model.programa.Eje.nombre</th>
+                </tr>
+                <tr>
+                    <th scope="row">Estrategias</th>
+                    <th scope="col">@Model.programa.estrategias</th>
+                </tr>
+                <tr>
+                    <th scope="row">Líneas de acción</th>
+                    <th scope="col">@Model.programa.lineas_accion</th>
+                </tr>
+            </table>
+        </div>
+        <div class=" w-col">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                        <th scope="row" colspan=5>Tipo de presupuesto</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Recurso propio</th>
+                        <th scope="col">Recurso estatal</th>
+                        <th scope="col">Federal</th>
+                        <th scope="col">Internacional</th>
+                        <th scope="col">No requiere</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <!--Checkbox PDM-->
+
+                                @if (@Model.programa.id_tipo_presupuesto == 1)
+                                {
+                                    <input class="form-check-input"  onclick="return false;" type="checkbox" checked="" id="defaultCheck1">
+
+                                }
+                                else
+                                {
+                                    <input class="form-check-input"  onclick="return false;" type="checkbox" id="defaultCheck1">
+
+                                }
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div> <!--Cierre checkbox PDM-->
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <!--Checkbox PDM--> 
+                            @if (@Model.programa.id_tipo_presupuesto == 2)
+                                {
+                                    <input class="form-check-input"  onclick="return false;" type="checkbox" checked="" id="defaultCheck1">
+
+                                }
+                                else
+                                {
+                                    <input class="form-check-input"  onclick="return false;" type="checkbox" id="defaultCheck1">
+
+                                }
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div> <!--Cierre checkbox PDM-->
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <!--Checkbox PDM-->
+                                @if (@Model.programa.id_tipo_presupuesto == 3)
+                                {
+                                    <input class="form-check-input"  onclick="return false;" type="checkbox" checked="" id="defaultCheck1">
+
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" onclick="return false;"type="checkbox" id="defaultCheck1">
+
+                                }
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div> <!--Cierre checkbox PDM-->
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <!--Checkbox PDM-->
+                                @if (@Model.programa.id_tipo_presupuesto == 4)
+                                {
+                                    <input class="form-check-input" onclick="return false;" type="checkbox" checked="" id="defaultCheck1">
+
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" onclick="return false;" type="checkbox" id="defaultCheck1">
+
+                                }
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div> <!--Cierre checkbox PDM-->
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <!--Checkbox PDM-->
+                                @if (@Model.programa.id_tipo_presupuesto == 5)
+                                {
+                                    <input class="form-check-input" onclick="return false;" type="checkbox" checked="" id="defaultCheck1">
+
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" onclick="return false;" type="checkbox" id="defaultCheck1">
+
+                                }
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div> <!--Cierre checkbox PDM-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                        <th scope="row" colspan=5>Datos financieros del programa</th>
+
+                    </tr>
+                    <tr>
+                        <th scope="col" style="background-color: #FFFD0B">Presupuesto autorizado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$ @Model.programa.presupuesto</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                        <th scope="row" colspan=5>Avance Financiero</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" style="background-color: #50b5e5">Trimestre</th>
+                        <th scope="col" style="background-color: #50b5e5">I</th>
+                        <th scope="col" style="background-color: #50b5e5">II</th>
+                        <th scope="col" style="background-color: #50b5e5">III</th>
+                        <th scope="col" style="background-color: #50b5e5">IV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        if(Model.programa.presupuesto != null)
+                        {
+                              if(Model.programa.porcentaje_1 != null)
+                              {
+                              try
+                              {
+                                    ViewBag.p1 = (Int32.Parse(Model.programa.presupuesto) * Int32.Parse(Model.programa.porcentaje_1))/100;
+
+                                }catch(Exception e)
+                                {
+                                    ViewBag.p1 = "";
+                                }
+
+                              }
+                              
+                              if(Model.programa.procentaje_2 != null)
+                              {
+                              try
+                              {
+                                    ViewBag.p2 = (Int32.Parse(Model.programa.presupuesto) * Int32.Parse(Model.programa.procentaje_2))/100;
+
+                                }catch(Exception e)
+                                {
+                                    ViewBag.p2 = "";
+                                }
+
+                              }
+                              if(Model.programa.procentaje_3 != null)
+                              {
+                              try
+                              {
+                                    ViewBag.p3 = (Int32.Parse(Model.programa.presupuesto) * Int32.Parse(Model.programa.procentaje_3))/100;
+
+                                }catch(Exception e)
+                                {
+                                    ViewBag.p3 = "";
+                                }
+
+                              }
+                              if(Model.programa.procentaje_4 != null)
+                              {
+                              try
+                              {
+                                    ViewBag.p4 = (Int32.Parse(Model.programa.presupuesto) * Int32.Parse(Model.programa.procentaje_4))/100;
+
+                                }catch(Exception e)
+                                {
+                                    ViewBag.p4 = "";
+                                }
+
+                              }
+                        }
+                      
+                    }
+                    <tr>
+                        <th scope="row">Monto</th>
+                        <td>$ @ViewBag.p1</td>
+                        <td>$ @ViewBag.p2</td>
+                        <td>$ @ViewBag.p3</td>
+                        <td>$ @ViewBag.p4</td>
+                    </tr>
+                    
+
+                    <tr>
+                        <th scope="row">Porcentaje </th>
+                        <td>% @Model.programa.porcentaje_1</td>
+                        <td>% @Model.programa.procentaje_2</td>
+                        <td>% @Model.programa.procentaje_3</td>
+                        <td>% @Model.programa.procentaje_4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla Tipo de presupuesto-->
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row px-sm-n5">
+        <div class="col px-md-n5">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                        <th colspan="4" scope="col">RESUMEN DE LOS PROGRAMAS/SUBPROGRAMAS</th>
+                        <th scope="col">DATO FINANCIERO</th>
+                    </tr>
+                    <tr class="text-center">
+                        <th scope="col" style="background-color: #50b5e5">SUBPROGRAMA/PROGRAMA</th>
+                        <th scope="col" style="background-color: #50b5e5">DESCRIPCIÓN</th>
+                        <th scope="col" style="background-color: #50b5e5">ÁREA RESPONSABLE</th>
+
+                        <th scope="col" style="background-color: #9a9a99">META</th>
+                        <th scope="col" style="background-color: #FFFD0B">MONTO FINANCIERO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var subs in @Model.subprogramas)
+                    {
+                        <tr>
+                            <td>@subs.nombre</td>
+                            <td>@subs.descripcion</td>
+                            <td>@subs.Programa.Area.nombre</td>
+                            <td>@subs.meta</td>
+                            <td>$ @subs.monto</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+</div>

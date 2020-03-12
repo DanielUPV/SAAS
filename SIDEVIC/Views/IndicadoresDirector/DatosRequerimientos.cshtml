@@ -1,0 +1,84 @@
+﻿
+@model SIDEVIC.Models.DatosRequerimientos
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+
+    function btn_añadir()
+    {
+        var id = "@ViewBag.id";
+        var cant = "@ViewBag.cant";
+        var i;
+        var datos = "";
+        var cadena = "#campo_";
+        for (i = 1; i <= cant; i++) {
+            cadena = cadena.concat(i.toString());
+            console.log(cadena);
+            if (i == cant) {
+                datos = datos.concat($(cadena).val());
+
+            } else {
+                datos = datos.concat($(cadena).val(),",");
+
+            }
+            cadena = "#campo_"
+        }
+        console.log(datos);
+        var url = '@Url.Action("DatosRequerimientos", "IndicadoresDirector", new { @id = "indi"})';
+        url = url.replace("indi", id);
+        url = url.concat("?datos=",datos)
+        window.location.href = url;
+    }
+    $(document).ready(function () {
+      
+
+    });
+</script>
+
+<br />
+
+<div style="width:100%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+  
+    <div class="form-group" style="width:50%;margin:auto">
+        <div>
+            <h3>Llenar datos para la evaluacion del indicador</h3>
+        </div>
+        <hr />
+        
+
+
+        <div class="form-group" style="text-align:left">
+            @{
+                int cant_a = 1;
+                string id_input;
+                foreach (var items in Model.lista_requerimientos)
+                {
+                    id_input = "campo_" + cant_a;
+
+                    <div class="form-group">
+                        @Html.Label(@items.Requerimientos.nombre, @items.Requerimientos.nombre, htmlAttributes: new { @class = "" })
+                        <input type="text" class="form-control" id="@id_input" />
+
+                    </div>
+                    cant_a = cant_a + 1;
+                }
+
+            }
+           
+            <br />
+            <input type="button" value="Guardar datos" class="btn btn-success" onclick="btn_añadir()" />
+
+           
+        </div>
+    </div>
+    }
+
+
+</div>
+
+

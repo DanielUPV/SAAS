@@ -1,0 +1,121 @@
+﻿@model SIDEVIC.Models.Eje
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn_Modal').click(function () {
+            var nom = $('#nombre').val();
+            var info = $('#info').val();
+            if (nom != "" || info != "") {
+                $('#modalVolver').modal('show');
+            } else {
+                window.location.href = '@Url.Action("Index","Ejes")';
+            }
+
+
+        });
+        var op = '@ViewBag.Flag';
+        if (op == "field_error") {
+            var nom = $('#nombre').val();
+            var info = $('#info').val();
+            if (info == "") {
+                document.getElementById('info').style.border = "1px solid #ff0000";
+            }
+            if (nom == "") {
+                document.getElementById('nombre').style.border = "1px solid #ff0000";
+            }
+
+            $('#modalError').modal('show');
+        }
+
+    });
+</script>
+
+<br />
+
+
+
+<div style="width:100%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group" style="width:50%;margin:auto">
+            <div>
+                <h3>Añadir eje</h3>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Nombre del eje", "Nombre del eje", htmlAttributes: new { @class = "" })
+
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", @id = "nombre", @autofocus = "" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Información", "Información", htmlAttributes: new { @class = "" })
+                <div style="width:100%;margin:auto">
+                    <textarea class="form-control" rows="5" id="info" name="informacion"></textarea>
+                    @Html.ValidationMessageFor(model => model.informacion, "", new { @class = "text-danger" })
+                </div>
+              
+
+            </div>
+            <div class="form-group" style="text-align:right">
+
+                <button type="button" id="btn_Modal" class="btn btn-danger">
+                    Volver
+                </button>
+                <input type="submit" value="Añadir" class="btn btn-success" />
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalVolver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#045cb8;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¿Está seguro de querer volver sin guardar?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Si vuelve, no se añadirá el eje
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
+                <a href="@Url.Action("Index","Ejes")" class="btn btn-danger">Volver</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#ff0000;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¡Campos sin llenar!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Complete los campos sin llenar
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal" id="btnModalError_aceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

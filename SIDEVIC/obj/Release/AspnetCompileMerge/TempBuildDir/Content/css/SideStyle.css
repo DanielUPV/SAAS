@@ -1,0 +1,33 @@
+form {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+label {
+    font-size: 25px;
+}
+
+.cart {
+    border-radius: 10px;
+    background-color:#045cb871;
+}
+
+body {
+    background-image: url("../img/presidencia2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+input {
+    width: 70%;
+    align-self: flex-end;
+}
+
+.logo {
+    border-radius: 10px;
+    width: 210px;
+    height: 120px;
+}

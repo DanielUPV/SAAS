@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddbae336f61c4bcda316739cc24b6922" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Area_Cargo" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Archivo" Width="1.5" PointX="12" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Area" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Eje" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Evaluacion" Width="1.5" PointX="12" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Frecuencia" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Indicador" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Indicador_area" Width="1.5" PointX="15" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Persona" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Programa" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Requerimientos" Width="1.5" PointX="12" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Requerimientos_cumple" Width="1.5" PointX="14.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Requerimientos_desempeño" Width="1.5" PointX="14.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Rol" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Subprograma" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Tema" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Tipo_indicador" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Tipo_presupuesto" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="snowball_sidevicbdModel.Usuario" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.archivo_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Area_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_area" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.indicador_area_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_eje" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Tema_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.evaluacion_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_user" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_id_frecuencia" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_subprograma" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.indicador_area_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Indicador_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Indicador_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.requerimientos_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Usuario_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_id_presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.fk_programa" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.requerimientos_cumple_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.requerimientos_desempeño_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="snowball_sidevicbdModel.Usuario_fk0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

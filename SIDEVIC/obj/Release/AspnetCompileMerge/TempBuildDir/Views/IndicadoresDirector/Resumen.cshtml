@@ -1,0 +1,199 @@
+﻿@model SIDEVIC.Models.DatosResumen
+
+@{
+    ViewBag.Title = "Resumen";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#inicio').val("@ViewBag.inicio");
+        $('#fin').val("@ViewBag.fin");
+        console.log($('#inicio').val());
+        console.log($('#fin').val());
+        $('#area').val("@Session["idarea"]");
+
+        $('#area').hide();
+
+        $('#inicio').change(function () {
+            var area = $('#area').val();
+            var inicio = $('#inicio').val();
+            var fin = $('#fin').val();
+            if (inicio != "" && fin != "" && area != 0) {
+                    var url = '@Url.Action("Resumen", "IndicadoresDirector", new { @id = "area", @inicio = "date1",  @fin = "date2" })';
+                url = url.replace("area", area);
+                url = url.replace("date1", inicio);
+                url = url.replace("&amp;fin=date2", "&fin=" + fin);
+                window.location.href = url;
+            }
+        });
+
+        $('#fin').change(function () {
+            var area = $('#area').val();
+            var inicio = $('#inicio').val();
+            var fin = $('#fin').val();
+            if (inicio != "" && fin != "" && area != 0) {
+                    var url = '@Url.Action("Resumen", "IndicadoresDirector", new { @id = "area", @inicio = "date1",  @fin = "date2" })';
+                url = url.replace("area", area);
+                url = url.replace("date1", inicio);
+                url = url.replace("&amp;fin=date2", "&fin=" + fin);
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+
+<div class="p-3 mb-2 text-white" style="background-color:#045cb8">
+    <h2>Resumen</h2>
+</div>
+
+<div class="row">
+    @Html.DropDownList("id_area", null, htmlAttributes: new { @class = "form-control", @id = "area" })
+
+  
+    <div class="col">
+        <a><small>Inicio:</small></a>
+        <input class="form-control" type="date" id="inicio">
+    </div>
+    <div class="col">
+        <a><small>Periodo:</small></a>
+        <input class="form-control" type="date" id="fin">
+    </div>
+</div>
+<div class="container-fluid">
+    <hr>
+</div>
+<div class="w-container-fluid border border-secondary">
+
+    <!--Contenedor de datos del administrador-->
+    <div class="row px-md-n5-">
+        <div class="w-row"></div>
+        <div class="w-col-3 text-center"> <img class="img-thumbnail" src="@ViewBag.ruta" width="110" height="110" alt=" "></div>
+        <div class="col-5">
+            <!--Contenedor de datos del administrador-->
+            <div class="p mb text-white text-center" style="background-color: #045cb8;"><b>Titular: @Model.titular</b> </div>
+            <div><b>Ubicación: @Model.ubicacion</b> </div>
+            <div><b>Dirección: @Model.direccion</b></div>
+            <div><b>Telefono: @Model.telefono</b></div>
+            <div><b>Correo: @Model.correo</b></div>
+        </div> <!--Fin contenedor de datos del administrador-->
+        <div class="col-5">
+            <div class="p mb text-white text-center" style="background-color: #045cb8;"><b>Áreas a su cargo:</b> </div>
+            <div><!--ejemplo--></div>
+           
+        </div>
+
+    </div>
+</div>  <!--Fin contenedor de datos del administrador-->
+<br>
+<div class="container-fluid">
+    <div class="row px-md-9">
+        <div class="col px-md-9">
+            <!--Columna Izq-->
+            <table class=" table table-hover mb-0">
+                <thead>
+                    <tr class="" style="">
+                        <th scope="col" rowspan="2">Resumen de Indicadores del Plan Municipal de Desarrollo</th>
+                        <th scope="col" rowspan="2">Total</th>
+                        <th colspan="3">Evaluación</th>
+                    </tr>
+                    <tr>
+                        <th style="background-color: #31E416;"></th>
+                        <th style="background-color: #FFFD0B;"></th>
+                        <th style="background-color: #FF0000;"></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Gestión</th>
+                        <td>@Model.cantidad_gestion</td> <!--Total-->
+                        <td>@Model.cantidad_v_g</td><!--Indicador verde-->
+                        <td>@Model.cantidad_a_g</td><!--Indicador Amarillo-->
+                        <td>@Model.cantidad_r_g</td><!--Indicador Rojo-->
+                    </tr>
+                    <tr>
+                        <th scope="row">Desempeño</th>
+                        <td>@Model.cantidad_desempeño</td> <!--Total-->
+                        <td>@Model.cantidad_v_d</td><!--Indicador verde-->
+                        <td>@Model.cantidad_a_d</td><!--Indicador Amarillo-->
+                        <td>@Model.cantidad_r_d</td><!--Indicador Rojo-->
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-hover table-bordered text-center">
+                <thead>
+                    <tr class="text-white" style="background-color: #4682b4;">
+                        <th scope="col" colspan="8">Indicadores Gestion</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" rowspan="2">EJE</th>
+                        <th scope="col" rowspan="2">Tema</th>
+                        <th scope="col" rowspan="2">Total</th>
+                        <th colspan="3">Evaluación</th>
+                        <th scope="col" rowspan="2">PMD</th>
+
+                    </tr>
+                    <tr>
+                        <th style="background-color: #31E416;"></th>
+                        <th style="background-color: #FFFD0B;"></th>
+                        <th style="background-color: #FF0000;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var gest in @Model.lista_gestion)
+                    {
+                        <tr>
+                            <td>@gest.eje</td><!--EJE-->
+                            <td>@gest.tema</td><!-- Tema-->
+                            <td>@gest.total</td><!--Total-->
+                            <td>@gest.verdes</td><!--Evaluacion-->
+                            <td>@gest.amarillos</td><!--Evaluacion-->
+                            <td>@gest.rojos</td><!--Evaluacion-->
+                            <td>@gest.pmd</td><!--Evaluacion-->
+                        </tr>
+                    }
+
+                    
+                </tbody>
+            </table>
+            <table class="table table-hover table-bordered text-center">
+                <thead>
+                    <tr class="text-white" style="background-color: #4682b4;">
+                        <th scope="col" colspan="8">Indicadores Desempeño</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" rowspan="2">EJE</th>
+                        <th scope="col" rowspan="2">Tema</th>
+                        <th scope="col" rowspan="2">Total</th>
+                        <th colspan="3">Evaluación</th>
+                        <th scope="col" rowspan="2">PMD</th>
+
+                    </tr>
+                    <tr>
+                        <th style="background-color: #31E416;"></th>
+                        <th style="background-color: #FFFD0B;"></th>
+                        <th style="background-color: #FF0000;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var gest in @Model.lista_desempeño)
+                    {
+                        <tr>
+                            <td>@gest.eje</td><!--EJE-->
+                            <td>@gest.tema</td><!-- Tema-->
+                            <td>@gest.total</td><!--Total-->
+                            <td>@gest.verdes</td><!--Evaluacion-->
+                            <td>@gest.amarillos</td><!--Evaluacion-->
+                            <td>@gest.rojos</td><!--Evaluacion-->
+                            <td>@gest.pmd</td><!--Evaluacion-->
+                        </tr>
+                    }
+                 
+                </tbody>
+            </table>
+        </div> <!--Fin Columna Izq-->
+    </div>
+</div>

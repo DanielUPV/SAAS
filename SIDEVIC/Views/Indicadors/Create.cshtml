@@ -1,0 +1,201 @@
+﻿@model SIDEVIC.Models.Indicador
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn_Modal').click(function () {
+                window.location.href = '@Url.Action("Index","Indicadors")';
+        });
+        var op = '@ViewBag.Flag';
+        if (op == "field_error") {
+            $('#modalError').modal('show');
+        }
+
+    });
+</script>
+
+<br />
+
+
+
+<div style="width:100%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-group" style="width:70%;margin:auto">
+        <div>
+            <h3>Añadir indicador</h3>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Nombre de indicador", "Nombre de indicador", htmlAttributes: new { @class = "" })
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Tipo de indicador", "Tipo de indicador", htmlAttributes: new { @class = "" })
+            @Html.DropDownList("id_tipo_indicador", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_tipo_indicador, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Tema", "Tema", htmlAttributes: new { @class = "" })
+            @Html.DropDownList("id_tema", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_tema, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Descripcion", "Descripcion", htmlAttributes: new { @class = "" })
+        
+        <textarea class="form-control" rows="5" id="info" name="descripcion">@if (Model != null){ @Model.descripcion }</textarea>
+        @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Frecuencia", "Frecuencia", htmlAttributes: new { @class = "" })
+            @Html.DropDownList("id_frecuencia", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_frecuencia, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Fecha de inicio", "Fecha de inicio", htmlAttributes: new { @class = "" })
+        @if (Model != null)
+        {
+            if (Model.fecha_inicio_año != null)
+            {
+                string dia;
+                string mes;
+                if (Model.fecha_inicio_año.Value.Day > 9)
+                {
+                    dia = Model.fecha_inicio_año.Value.Day.ToString();
+                }
+                else
+                {
+
+                    dia = "0" + Model.fecha_inicio_año.Value.Day.ToString();
+                }
+                if (Model.fecha_inicio_año.Value.Month > 9)
+                {
+                    mes = Model.fecha_inicio_año.Value.Month.ToString();
+                }
+                else
+                {
+                    mes = "0" + Model.fecha_inicio_año.Value.Month.ToString();
+                }
+
+                ViewBag.f = Model.fecha_inicio_año.Value.Year.ToString() + "-" + mes + "-" + dia;
+            }
+        }
+
+        <input value="@ViewBag.f" style="width:30%" class="form-control" type="date" name="fecha_inicio_año">
+        @Html.ValidationMessageFor(model => model.fecha_inicio_año, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Diagnostico", "Diagnostico", htmlAttributes: new { @class = "" })
+       
+    <select style="width:30%" class="list-box tri-state form-control" id="diagnostico" name="diagnostico">
+        <option value="false">No</option>
+        <option value="true">Si</option>
+    </select>
+            @Html.ValidationMessageFor(model => model.diagnostico, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("PMD", "PMD", htmlAttributes: new { @class = "" })
+        <select style="width:30%" class="list-box tri-state form-control" id="pmd" name="pmd">
+            <option value="false">No</option>
+
+            <option value="true">Si</option>
+        </select>
+        @Html.ValidationMessageFor(model => model.pmd, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Subprograma", "Subprograma", htmlAttributes: new { @class = "" })
+            @Html.DropDownList("id_subprograma", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_subprograma, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Formula", "Formula", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="formula">@if (Model != null) { @Model.formula }</textarea>
+        @Html.ValidationMessageFor(model => model.formula, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Dimension", "Dimension", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="dimension">@if (Model != null) { @Model.dimension }</textarea>
+        @Html.ValidationMessageFor(model => model.dimension, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Medio de verificacion", "Medio de verificacion", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="medio_verificacion">@if (Model != null) { @Model.medio_verificacion }</textarea>
+        @Html.ValidationMessageFor(model => model.medio_verificacion, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Meta", "Meta", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="meta">@if (Model != null) { @Model.meta }</textarea>
+        @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Requisitos inaceptable", "Requisitos inaceptables", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="r_inaceptable">@if (Model != null) { @Model.r_inaceptable }</textarea>
+        @Html.ValidationMessageFor(model => model.r_inaceptable, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Requisitos bajo aceptable", "Requisitos bajo aceptable", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="r_bajo_aceptable">@if (Model != null) { @Model.r_bajo_aceptable }</textarea>
+        @Html.ValidationMessageFor(model => model.r_bajo_aceptable, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Requisitos aceptable", "Requisitos aceptable", htmlAttributes: new { @class = "" })
+        <textarea class="form-control" rows="5" id="info" name="r_aceptable">@if (Model != null) { @Model.r_aceptable }</textarea>
+        @Html.ValidationMessageFor(model => model.r_aceptable, "", new { @class = "text-danger" })
+    </div>
+        <div class="form-group" style="text-align:right">
+
+            <button type="button" id="btn_Modal" class="btn btn-danger">
+                Volver
+            </button>
+            <input type="submit" value="Añadir" class="btn btn-success" />
+        </div>
+    </div>
+    }
+
+
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#ff0000;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¡Campos sin llenar!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Complete los campos sin llenar
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal" id="btnModalError_aceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

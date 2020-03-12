@@ -1,0 +1,146 @@
+﻿@model SIDEVIC.Models.Evaluacion
+
+    @{
+        ViewBag.Title = "FichaTecnica";
+    }
+
+
+    <div class="p-3 mb-2 text-white" style="background-color:#045cb8">
+        <h2>Ficha tecnica</h2>
+    </div>
+    <!--codigo de ustedes-->
+    <div class="row">
+        <div class="container-fluid">
+            <br>
+            <div class="row px-md-n5 ">
+                <div class="col px-pb-n5">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr class="text-white text-center" style="background-color: #4682b4;">
+                                <th scope="col">EJE</th>
+                                <th scope="col">TEMA</th>
+                                <th scope="col">RESPONSABLE</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="text-uppercase">@Model.Indicador.Tema.Eje.nombre</td>
+                                <td class="text-uppercase">@Model.Indicador.Tema.nombre</td>
+                                <td class="text-uppercase">@ViewBag.responsable</td>
+                            </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+                <div class="container-fluid">
+                    <br>
+                    <div class="row px-md-n5 ">
+                        <div class="col px-pb-n5">
+                            <table class="table table-hover table-bordered text-justify">
+                                <thead>
+                                    <tr class="text-white text-center" style="background-color: #4682b4;">
+                                        <th scope="col">NOMBRE DEL INDICADOR</th>
+                                        <th scope="col">DESCRIPCIÓN DEL INDICADOR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Model.Indicador.nombre</td>
+                                        <td>@Model.Indicador.descripcion</td>
+                                    </tr>
+                              
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                        <BR>
+                        <div class="container-fluid">
+
+                            <div class="row px-md-n5 ">
+                                <div class="col px-pb-n5">
+                                    <table class="table table-hover table-bordered text-justify">
+                                        <thead>
+                                            <tr class="text-white text-center" style="background-color: #4682b4;">
+                                                <th scope="col">DATOS NECESARIOS PARA EL INDICADOR</th>
+                                                <th scope="col">FÓRMULA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @if (ViewBag.lista != null)
+                                                    {
+                                                        foreach (var item in ViewBag.lista)
+                                                        {
+                                                            @item
+                                                            <br>
+                                                        }
+                                                    }
+
+                                                </td>
+                                                <td>@Model.Indicador.formula</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="container-fluid">
+                                <br>
+                                <div class="row px-md-n5 ">
+                                    <div class="col px-pb-n5">
+                                        <table class="table table-hover table-bordered text-center">
+                                            <thead>
+                                                <tr class="text-white" style="background-color: #4682b4;">
+                                                    <th scope="col">TIPO DE INDICADOR</th>
+                                                    <th scope="col">DIMENSIÓN DEL INDICADOR</th>
+                                                    <th scope="col">FRECUENCIA</th>
+                                                    <th scope="col">MEDIO DE VERIFICACIÓN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Model.Indicador.Tipo_indicador.nombre</td>
+                                                    <td>@Model.Indicador.dimension</td>
+                                                    <td>@Model.Indicador.Frecuencia.frecuencia1</td>
+                                                    <td>@Model.Indicador.medio_verificacion</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                                    <div class="container-fluid">
+                                        <div class="row px-md-n5">
+                                            <div class="col px-md-n5">
+                                                <table class="table table-hover table-bordered">
+                                                    <thead>
+                                                        <tr class="text-white text-center" style="background-color: #4682b4;">
+                                                            <th scope="col" rowspan="2">RESULTADO</th>
+                                                            <th scope="col" rowspan="2">META ESPERADA</th>
+                                                            <th colspan="3">RANGOS O VALORES DE REFERENCIA</th>
+                                                        </tr>
+                                                        <tr class="text-center">
+                                                            <th style="background-color: #31E416;">ACEPTABLE</th>
+                                                            <th style="background-color: #FFFD0B;">BAJO ACEPTABLE</th>
+                                                            <th style="background-color: #FF0000;">INACEPTABLE</th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="text-center">
+                                                            <td>@Model.evaluacion1</td>
+                                                            <td>@Model.Indicador.meta</td>
+                                                            <td>@Model.Indicador.r_aceptable</td>
+                                                            <td>@Model.Indicador.r_bajo_aceptable</td>
+                                                            <td>@Model.Indicador.r_inaceptable</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                        </div>
+        </div>

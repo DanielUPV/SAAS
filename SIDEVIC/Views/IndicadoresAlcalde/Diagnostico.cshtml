@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostico";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+
+        $('#area').change(function () {
+            var area = $('#area').val();
+            var fecha = $('#fecha').val();
+            if (area != 0) {
+                var url = '@Url.Action("Diagnostico", "IndicadoresAlcalde", new { @id = "area", @fecha_s = "datof" })';
+                url = url.replace("area", area);
+                url = url.replace("datof", fecha);
+                window.location.href = url;       
+            }
+        });
+
+        $('#fecha').change(function () {
+            var area = $('#area').val();
+            var fecha = $('#fecha').val();
+            console.log(fecha);
+            if (fecha != 0) {
+                var url = '@Url.Action("Diagnostico", "IndicadoresAlcalde", new { @id = "area", @fecha_s = "datof" })';
+                url = url.replace("area", area);
+                url = url.replace("datof", fecha);
+                window.location.href = url;       
+            }
+        });
+
+     
+    });
+</script>
+<div class="p-3 mb-2 text-white" style="background-color:#045cb8">
+    <h2>Diagnostico</h2>
+</div>
+    <div class="container-fluid">
+        <center>
+            <div class="row" style="width:50%">
+                <div class="col">
+                    <a><small>Area:</small></a>
+
+                    @Html.DropDownList("id_area", null, htmlAttributes: new { @class = "form-control", @id = "area" })
+                </div>
+                <div class="col">
+                    <a><small>Fecha</small></a>
+                    @Html.DropDownList("id_fecha", null, htmlAttributes: new { @class = "form-control", @id = "fecha" })
+                </div>
+
+            </div>
+        </center>
+        <br />
+        <center>
+            <div class="col-8">
+                @if (ViewBag.ruta != null)
+                {
+                    <object data="@ViewBag.ruta" type="application/pdf" width="100%" height="1000">
+                    </object>
+                }
+
+
+
+            </div>
+        </center>
+    </div>
+
+

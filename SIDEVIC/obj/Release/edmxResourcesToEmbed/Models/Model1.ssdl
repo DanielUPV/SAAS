@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="snowball_sidevicbdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Area_Cargo">
+    <Key>
+      <PropertyRef Name="id_areas" />
+    </Key>
+    <Property Name="id_areas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="id_persona" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Archivo">
+    <Key>
+      <PropertyRef Name="id_archivo" />
+    </Key>
+    <Property Name="id_archivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_indicador" Type="int" Nullable="false" />
+    <Property Name="id_ruta" Type="varchar" MaxLength="800" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="id_area" />
+    </Key>
+    <Property Name="id_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="id_persona" Type="int" Nullable="false" />
+    <Property Name="informacion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Eje">
+    <Key>
+      <PropertyRef Name="id_eje" />
+    </Key>
+    <Property Name="id_eje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="informacion" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evaluacion">
+    <Key>
+      <PropertyRef Name="id_evaluacion" />
+    </Key>
+    <Property Name="id_evaluacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="evaluacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_indicador" Type="int" Nullable="false" />
+    <Property Name="comentarios" Type="varchar" MaxLength="800" />
+    <Property Name="acciones" Type="varchar" MaxLength="500" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="presupuesto" Type="varchar" MaxLength="50" />
+    <Property Name="producto" Type="varchar" MaxLength="500" />
+    <Property Name="dato" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Frecuencia">
+    <Key>
+      <PropertyRef Name="id_frecuencia" />
+    </Key>
+    <Property Name="id_frecuencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="frecuencia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Indicador">
+    <Key>
+      <PropertyRef Name="id_indicador" />
+    </Key>
+    <Property Name="id_indicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="id_tipo_indicador" Type="int" Nullable="false" />
+    <Property Name="id_tema" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="id_frecuencia" Type="int" Nullable="false" />
+    <Property Name="fecha_inicio_año" Type="date" />
+    <Property Name="diagnostico" Type="bit" />
+    <Property Name="pmd" Type="bit" />
+    <Property Name="id_subprograma" Type="int" />
+    <Property Name="formula" Type="varchar" MaxLength="1000" />
+    <Property Name="dimension" Type="varchar" MaxLength="500" />
+    <Property Name="medio_verificacion" Type="varchar" MaxLength="500" />
+    <Property Name="meta" Type="varchar" MaxLength="500" />
+    <Property Name="r_inaceptable" Type="varchar" MaxLength="500" />
+    <Property Name="r_bajo_aceptable" Type="varchar" MaxLength="500" />
+    <Property Name="r_aceptable" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Indicador_area">
+    <Key>
+      <PropertyRef Name="id_indicador_area" />
+    </Key>
+    <Property Name="id_indicador" Type="int" Nullable="false" />
+    <Property Name="id_area" Type="int" Nullable="false" />
+    <Property Name="id_indicador_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="id_persona" />
+    </Key>
+    <Property Name="id_persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="cargo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ruta_foto" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Programa">
+    <Key>
+      <PropertyRef Name="id_programa" />
+    </Key>
+    <Property Name="id_programa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="objetivo" Type="varchar" MaxLength="500" />
+    <Property Name="problematica" Type="varchar" MaxLength="800" />
+    <Property Name="beneficiarios" Type="varchar" MaxLength="800" />
+    <Property Name="id_eje" Type="int" />
+    <Property Name="estrategias" Type="varchar" MaxLength="300" />
+    <Property Name="lineas_accion" Type="varchar" MaxLength="500" />
+    <Property Name="id_area" Type="int" />
+    <Property Name="presupuesto" Type="varchar" MaxLength="20" />
+    <Property Name="porcentaje_1" Type="varchar" MaxLength="20" />
+    <Property Name="procentaje_2" Type="varchar" MaxLength="20" />
+    <Property Name="procentaje_3" Type="varchar" MaxLength="20" />
+    <Property Name="procentaje_4" Type="varchar" MaxLength="20" />
+    <Property Name="id_tipo_presupuesto" Type="int" />
+  </EntityType>
+  <EntityType Name="Requerimientos">
+    <Key>
+      <PropertyRef Name="id_requerimientos" />
+    </Key>
+    <Property Name="id_requerimientos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_indicador" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="5000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Requerimientos_cumple">
+    <Key>
+      <PropertyRef Name="id_cumple" />
+    </Key>
+    <Property Name="id_cumple" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_requerimientos" Type="int" Nullable="false" />
+    <Property Name="cumple" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Requerimientos_desempeño">
+    <Key>
+      <PropertyRef Name="id_desempeño" />
+    </Key>
+    <Property Name="id_desempeño" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_requerimientos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subprograma">
+    <Key>
+      <PropertyRef Name="id_sub" />
+    </Key>
+    <Property Name="id_sub" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="meta" Type="varchar" MaxLength="1000" />
+    <Property Name="monto" Type="varchar" MaxLength="50" />
+    <Property Name="id_programa" Type="int" />
+  </EntityType>
+  <EntityType Name="Tema">
+    <Key>
+      <PropertyRef Name="id_tema" />
+    </Key>
+    <Property Name="id_tema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_eje" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_indicador">
+    <Key>
+      <PropertyRef Name="id_tipo_indicador" />
+    </Key>
+    <Property Name="id_tipo_indicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_presupuesto">
+    <Key>
+      <PropertyRef Name="id_tipo_presupuesto" />
+    </Key>
+    <Property Name="id_tipo_presupuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_rol" Type="int" />
+    <Property Name="id_persona" Type="int" />
+  </EntityType>
+  <Association Name="archivo_fk0">
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="1" />
+    <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicador">
+        <PropertyRef Name="id_indicador" />
+      </Principal>
+      <Dependent Role="Archivo">
+        <PropertyRef Name="id_indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Area_fk0">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Area" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="id_persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="evaluacion_fk0">
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicador">
+        <PropertyRef Name="id_indicador" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="id_indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_area">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Programa" Type="Self.Programa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="Programa">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_eje">
+    <End Role="Eje" Type="Self.Eje" Multiplicity="0..1" />
+    <End Role="Programa" Type="Self.Programa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eje">
+        <PropertyRef Name="id_eje" />
+      </Principal>
+      <Dependent Role="Programa">
+        <PropertyRef Name="id_eje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_frecuencia">
+    <End Role="Frecuencia" Type="Self.Frecuencia" Multiplicity="1" />
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Frecuencia">
+        <PropertyRef Name="id_frecuencia" />
+      </Principal>
+      <Dependent Role="Indicador">
+        <PropertyRef Name="id_frecuencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_presupuesto">
+    <End Role="Tipo_presupuesto" Type="Self.Tipo_presupuesto" Multiplicity="0..1" />
+    <End Role="Programa" Type="Self.Programa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_presupuesto">
+        <PropertyRef Name="id_tipo_presupuesto" />
+      </Principal>
+      <Dependent Role="Programa">
+        <PropertyRef Name="id_tipo_presupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_persona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Area_Cargo" Type="Self.Area_Cargo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="Area_Cargo">
+        <PropertyRef Name="id_persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_programa">
+    <End Role="Programa" Type="Self.Programa" Multiplicity="0..1" />
+    <End Role="Subprograma" Type="Self.Subprograma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programa">
+        <PropertyRef Name="id_programa" />
+      </Principal>
+      <Dependent Role="Subprograma">
+        <PropertyRef Name="id_programa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_subprograma">
+    <End Role="Subprograma" Type="Self.Subprograma" Multiplicity="0..1" />
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subprograma">
+        <PropertyRef Name="id_sub" />
+      </Principal>
+      <Dependent Role="Indicador">
+        <PropertyRef Name="id_subprograma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="indicador_area_fk0">
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="1" />
+    <End Role="Indicador_area" Type="Self.Indicador_area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicador">
+        <PropertyRef Name="id_indicador" />
+      </Principal>
+      <Dependent Role="Indicador_area">
+        <PropertyRef Name="id_indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="indicador_area_fk1">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="Indicador_area" Type="Self.Indicador_area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="Indicador_area">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Indicador_fk0">
+    <End Role="Tipo_indicador" Type="Self.Tipo_indicador" Multiplicity="1" />
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_indicador">
+        <PropertyRef Name="id_tipo_indicador" />
+      </Principal>
+      <Dependent Role="Indicador">
+        <PropertyRef Name="id_tipo_indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Indicador_fk1">
+    <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tema">
+        <PropertyRef Name="id_tema" />
+      </Principal>
+      <Dependent Role="Indicador">
+        <PropertyRef Name="id_tema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requerimientos_cumple_fk0">
+    <End Role="Requerimientos" Type="Self.Requerimientos" Multiplicity="1" />
+    <End Role="Requerimientos_cumple" Type="Self.Requerimientos_cumple" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requerimientos">
+        <PropertyRef Name="id_requerimientos" />
+      </Principal>
+      <Dependent Role="Requerimientos_cumple">
+        <PropertyRef Name="id_requerimientos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requerimientos_desempeño_fk0">
+    <End Role="Requerimientos" Type="Self.Requerimientos" Multiplicity="1" />
+    <End Role="Requerimientos_desempeño" Type="Self.Requerimientos_desempeño" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requerimientos">
+        <PropertyRef Name="id_requerimientos" />
+      </Principal>
+      <Dependent Role="Requerimientos_desempeño">
+        <PropertyRef Name="id_requerimientos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requerimientos_fk0">
+    <End Role="Indicador" Type="Self.Indicador" Multiplicity="1" />
+    <End Role="Requerimientos" Type="Self.Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicador">
+        <PropertyRef Name="id_indicador" />
+      </Principal>
+      <Dependent Role="Requerimientos">
+        <PropertyRef Name="id_indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tema_fk0">
+    <End Role="Eje" Type="Self.Eje" Multiplicity="1" />
+    <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eje">
+        <PropertyRef Name="id_eje" />
+      </Principal>
+      <Dependent Role="Tema">
+        <PropertyRef Name="id_eje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Usuario_fk0">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Usuario_fk1">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="id_persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="snowball_sidevicbdModelStoreContainer">
+    <EntitySet Name="Area_Cargo" EntityType="Self.Area_Cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Archivo" EntityType="Self.Archivo" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Eje" EntityType="Self.Eje" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Frecuencia" EntityType="Self.Frecuencia" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Indicador" EntityType="Self.Indicador" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Indicador_area" EntityType="Self.Indicador_area" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Programa" EntityType="Self.Programa" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Requerimientos" EntityType="Self.Requerimientos" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Requerimientos_cumple" EntityType="Self.Requerimientos_cumple" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Requerimientos_desempeño" EntityType="Self.Requerimientos_desempeño" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Subprograma" EntityType="Self.Subprograma" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Tema" EntityType="Self.Tema" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Tipo_indicador" EntityType="Self.Tipo_indicador" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Tipo_presupuesto" EntityType="Self.Tipo_presupuesto" Schema="snowball_sidevic" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="snowball_sidevic" store:Type="Tables" />
+    <AssociationSet Name="archivo_fk0" Association="Self.archivo_fk0">
+      <End Role="Indicador" EntitySet="Indicador" />
+      <End Role="Archivo" EntitySet="Archivo" />
+    </AssociationSet>
+    <AssociationSet Name="Area_fk0" Association="Self.Area_fk0">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <AssociationSet Name="evaluacion_fk0" Association="Self.evaluacion_fk0">
+      <End Role="Indicador" EntitySet="Indicador" />
+      <End Role="Evaluacion" EntitySet="Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_area" Association="Self.fk_area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Programa" EntitySet="Programa" />
+    </AssociationSet>
+    <AssociationSet Name="fk_eje" Association="Self.fk_eje">
+      <End Role="Eje" EntitySet="Eje" />
+      <End Role="Programa" EntitySet="Programa" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_frecuencia" Association="Self.fk_id_frecuencia">
+      <End Role="Frecuencia" EntitySet="Frecuencia" />
+      <End Role="Indicador" EntitySet="Indicador" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_presupuesto" Association="Self.fk_id_presupuesto">
+      <End Role="Tipo_presupuesto" EntitySet="Tipo_presupuesto" />
+      <End Role="Programa" EntitySet="Programa" />
+    </AssociationSet>
+    <AssociationSet Name="fk_persona" Association="Self.fk_persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Area_Cargo" EntitySet="Area_Cargo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_programa" Association="Self.fk_programa">
+      <End Role="Programa" EntitySet="Programa" />
+      <End Role="Subprograma" EntitySet="Subprograma" />
+    </AssociationSet>
+    <AssociationSet Name="fk_subprograma" Association="Self.fk_subprograma">
+      <End Role="Subprograma" EntitySet="Subprograma" />
+      <End Role="Indicador" EntitySet="Indicador" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user" Association="Self.fk_user">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Evaluacion" EntitySet="Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="indicador_area_fk0" Association="Self.indicador_area_fk0">
+      <End Role="Indicador" EntitySet="Indicador" />
+      <End Role="Indicador_area" EntitySet="Indicador_area" />
+    </AssociationSet>
+    <AssociationSet Name="indicador_area_fk1" Association="Self.indicador_area_fk1">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Indicador_area" EntitySet="Indicador_area" />
+    </AssociationSet>
+    <AssociationSet Name="Indicador_fk0" Association="Self.Indicador_fk0">
+      <End Role="Tipo_indicador" EntitySet="Tipo_indicador" />
+      <End Role="Indicador" EntitySet="Indicador" />
+    </AssociationSet>
+    <AssociationSet Name="Indicador_fk1" Association="Self.Indicador_fk1">
+      <End Role="Tema" EntitySet="Tema" />
+      <End Role="Indicador" EntitySet="Indicador" />
+    </AssociationSet>
+    <AssociationSet Name="requerimientos_cumple_fk0" Association="Self.requerimientos_cumple_fk0">
+      <End Role="Requerimientos" EntitySet="Requerimientos" />
+      <End Role="Requerimientos_cumple" EntitySet="Requerimientos_cumple" />
+    </AssociationSet>
+    <AssociationSet Name="requerimientos_desempeño_fk0" Association="Self.requerimientos_desempeño_fk0">
+      <End Role="Requerimientos" EntitySet="Requerimientos" />
+      <End Role="Requerimientos_desempeño" EntitySet="Requerimientos_desempeño" />
+    </AssociationSet>
+    <AssociationSet Name="requerimientos_fk0" Association="Self.requerimientos_fk0">
+      <End Role="Indicador" EntitySet="Indicador" />
+      <End Role="Requerimientos" EntitySet="Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Tema_fk0" Association="Self.Tema_fk0">
+      <End Role="Eje" EntitySet="Eje" />
+      <End Role="Tema" EntitySet="Tema" />
+    </AssociationSet>
+    <AssociationSet Name="Usuario_fk0" Association="Self.Usuario_fk0">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="Usuario_fk1" Association="Self.Usuario_fk1">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

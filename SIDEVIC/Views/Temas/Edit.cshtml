@@ -1,0 +1,117 @@
+﻿@model SIDEVIC.Models.Tema
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn_Modal').click(function () {
+            var nombre  = $('#nombre').val();
+            var eje = $('#eje').val();
+            if (nombre != "@ViewBag.nombre" || eje != "@ViewBag.eje") {
+                $('#modalVolver').modal('show');
+            } else {
+                window.location.href = '@Url.Action("Index","Temas")';
+            }
+
+        });
+
+        var op = '@ViewBag.Flag';
+        if (op == "field_error") {
+            var nombre  = $('#nombre').val();
+
+            if (nombre == "") {
+                document.getElementById('nombre').style.border = "1px solid #ff0000";
+            }
+
+            $('#modalError').modal('show');
+        }
+
+    });
+</script>
+
+<br />
+
+
+
+<div style="width:100%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group" style="width:50%;margin:auto">
+            <div>
+                <h3>Editar tema</h3>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id_tema)
+
+            <div class="form-group">
+                @Html.Label("Nombre del tema", "Nombre del tema", htmlAttributes: new { @class = "" })
+
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", @id = "nombre", @autofocus = "" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Eje", "Eje", htmlAttributes: new { @class = "" })
+
+                @Html.DropDownList("id_eje", null, htmlAttributes: new { @class = "form-control", @id = "eje" })
+                @Html.ValidationMessageFor(model => model.id_eje, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group" style="text-align:right">
+
+                <button type="button" id="btn_Modal" class="btn btn-danger">
+                    Volver
+                </button>
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVolver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#045cb8;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¿Está seguro de querer volver sin guardar?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Si vuelve, no se guardarán los cambios realizádos
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
+                <a href="@Url.Action("Index","Temas")" class="btn btn-danger">Volver</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#ff0000;color:#fff">
+                <h4 class="modal-title" id="myModalLabel">¡Campos sin llenar!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;font-size:large">
+                    Complete los campos sin llenar
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal" id="btnModalError_aceptar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

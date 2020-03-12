@@ -1,0 +1,97 @@
+﻿@model SIDEVIC.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/SideStyle.css">
+<script type="text/javascript" src="~/Content/js/sweetalert.min.js"></script>
+<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var op = "@ViewBag.Flag";
+        if (op == "user_pass_error") {
+            $('#myModal').modal('show');
+        }
+    });
+</script>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="cart form-group">
+            <div class="card-header">
+                <center>
+                    <img class="logo" src="~/Content/img/sivic.jpg" />
+                </center>
+            </div>
+            <form class="form text-light" id="form_login" action="~/Access/Login" method="post">
+                <label for="User" class="control-label">
+                    <i class="fa fa-user"></i> Usuario:
+                </label>
+                @Html.TextBoxFor(m => m.usuario, new { @class = "form-control", @required = "", @autofocus = "" })
+                <br>
+
+                <label for="Pass" class="control-label">
+                    <i class="fa fa-key"></i> Contraseña:
+                </label>
+                @Html.PasswordFor(m => m.contrasena, new { @class = "form-control", @required = "" })
+            </form>
+
+            <div class="card-footer">
+                <center>
+
+                    <button type="submit" class="btn btn-primary" name="Entrar" form="form_login">
+                        Ingresar <i class="fa fa-unlock"></i>
+                    </button>
+                    <br>
+                    <a class="btn btn-link text-light">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">¡Usuario y/o contraseña incorrectos!</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Ingrese los datos nuevamente
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Datos correctos</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Redirigiendo automaticamente...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/popper.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
